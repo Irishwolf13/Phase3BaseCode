@@ -8,12 +8,23 @@ def self.average_of_something                                         #Returns a
   all.sum{|item| item.something_to_average}/all.length                #Sums all items in a collumn and averages them
 end                                                                   #end Self.average_of_something
 
+def find_by_max_occruance
+  self.tableToLookThrough.max_by(&:collumnToLookAt)                   #Max min or lowestest/ highest
+end
+
+def self.find_first_or_last
+  ClassName.all.order("Collumn To Look At").first #or use .last       #This will use order to put things in order according to the collumn given in the param.
+end
+
 self.tables.where(variable: boolean)                                  #Basic where statement
+
+ClassName.create(item_name: item_name,value: value)                   #Basic create row syntax
 
 # **************************  ACTIVE RECORDS MODELS  **************************
 class VarName < ActiveRecord::Base                            #Inherits all the glory that is ActiveRecord::Base
   belongs_to :variable                                        #This goes on a class that has a foreign key on another table
-  has_many :variables                                         #This goes on a Class it's table has a foreign key that is the id of another class
+  has_many :variables1                                        #This goes on a Class it's table has a foreign key that is the id of another class
+  has_many :variables2, through: :variables1                  #This is a many to many relationship
 end                                                           #close of class ClassName
 
 #.max_by(&:variable)                                          #How to search for passed in variable with Pretzel:
