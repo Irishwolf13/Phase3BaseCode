@@ -16,6 +16,7 @@ def self.find_first_or_last
   ClassName.all.order("Collumn To Look At").first #or use .last       #This will use order to put things in order according to the collumn given in the param.
 end
 
+self.tables.pluck(:collumn).join(";")                                 #Pluck will pull the item out of the row, join(";") then joins all instances together in one string!
 self.tables.where(variable: boolean)                                  #Basic where statement
 
 ClassName.create(item_name: item_name,value: value)                   #Basic create row syntax
